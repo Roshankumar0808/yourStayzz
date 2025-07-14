@@ -5,23 +5,28 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.cache.annotation.EnableCaching;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
 
 @Entity
 @Getter
 @Setter
-@Table(name="hotel")
-public class Hotel {
+public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "hotel_id", nullable = false)
+    private Hotel hotel;
 
-    private String city;
+    @Column(nullable = false)
+    private String type;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal basePrice;
 
     @Column(columnDefinition = "TEXT[]")
     private String[] photos;
@@ -29,16 +34,16 @@ public class Hotel {
     @Column(columnDefinition = "TEXT[]")
     private String[] amenities;
 
+    @Column(nullable = false)
+    private Integer totalCount;
+
+    @Column(nullable = false)
+    private Integer capacity;
+
     @CreationTimestamp
+    @Column(updatable = false)
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-
-    @Embedded
-    private HotelContactInfo contactInfo;
-
-    @Column(nullable = false)
-    private Boolean active;
-
 }

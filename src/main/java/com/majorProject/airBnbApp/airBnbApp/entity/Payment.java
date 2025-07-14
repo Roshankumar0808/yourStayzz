@@ -1,44 +1,37 @@
 package com.majorProject.airBnbApp.airBnbApp.entity;
 
+import com.majorProject.airBnbApp.airBnbApp.entity.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.cache.annotation.EnableCaching;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-@Table(name="hotel")
-public class Hotel {
+public class Payment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, nullable = false)
+    private String transactionId;
+
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String name;
+    private PaymentStatus paymentStatus;
 
-    private String city;
-
-    @Column(columnDefinition = "TEXT[]")
-    private String[] photos;
-
-    @Column(columnDefinition = "TEXT[]")
-    private String[] amenities;
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal amount;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-
-    @Embedded
-    private HotelContactInfo contactInfo;
-
-    @Column(nullable = false)
-    private Boolean active;
-
 }
