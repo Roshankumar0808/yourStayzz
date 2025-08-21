@@ -1,5 +1,6 @@
 package com.majorProject.airBnbApp.airBnbApp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,12 +9,14 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.cache.annotation.EnableCaching;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@Table(name="hotel")
+@Table(name = "hotel")
 public class Hotel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,5 +43,12 @@ public class Hotel {
 
     @Column(nullable = false)
     private Boolean active;
+
+    @ManyToOne(optional = false)
+    private User owner;
+
+    @OneToMany(mappedBy = "hotel")
+    @JsonIgnore
+    private List<Room> rooms;
 
 }
