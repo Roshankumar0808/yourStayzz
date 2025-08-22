@@ -1,6 +1,7 @@
 ![alt text](https://github.com/Roshankumar0808/yourStayzz/blob/master/swagger1.png)
 ![alt text](https://github.com/Roshankumar0808/yourStayzz/blob/master/swagger2.png)
 ![alt text](https://github.com/Roshankumar0808/yourStayzz/blob/master/swagger3.png)
+![alt text](https://github.com/Roshankumar0808/yourStayzz/blob/master/swagger4.png)
 # 🏨 Hotel Management System - Spring Boot Project
 
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.3-brightgreen.svg)](https://spring.io/projects/spring-boot)
