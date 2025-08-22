@@ -11,7 +11,7 @@
 [![Stripe](https://img.shields.io/badge/Stripe-Payment-purple.svg)](https://stripe.com/)
 
 ## 📋 Project Overview
-A comprehensive **Hotel Management System** built with **Spring Boot** that handles the complete hotel operations lifecycle with robust backend architecture and real-world business features.
+A comprehensive **Hotel Booking system** built with **Spring Boot** that handles the complete hotel operations lifecycle with robust backend architecture and real-world business features.
 
 ## ✨ Key Features
 
